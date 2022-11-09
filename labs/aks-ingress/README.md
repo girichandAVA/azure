@@ -116,7 +116,7 @@ Now everything is ready, we'll deploy a simple app which we can reach using a pu
 This command creates the Kubectl context and sets it as the current one:
 
 ```
-az aks get-credentials -g labs-aks-ingress -n aks04
+az aks get-credentials -g labs-aks-ingress -n aks04 --overwrite
 ```
 
 It's always a good idea to list the nodes, to check you're using the right cluster:
@@ -138,7 +138,7 @@ For the Ingress object we need to set the DNS name to match the PIP. Run this to
 ```
 az network public-ip show -g labs-aks-ingress -n appgw-pip --query 'dnsSettings.fqdn' -o tsv
 ```
-> **Edit the file** [ingress-aks.yaml](labs/aks-ingress/specs/ingress-aks.yaml), replacing the placeholder <pip-fqdn> with your actual FQDN.
+> **Edit the file** [ingress-aks.yaml](/labs/aks-ingress/specs/ingress-aks.yaml), replacing the placeholder <pip-fqdn> with your actual FQDN.
 
 📋 Create the Ingress object from `labs/aks-ingress/specs/ingress-aks.yaml` and print the details. Browse to the domain name - do you see the app?
 
